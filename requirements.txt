@@ -1,0 +1,5 @@
+dictalchemy==0.1.2.7
+SQLAlchemy==1.2.10
+tornado==5.0.2
+schematics==2.1.0
+./libs/geoalchemy2.zip # current version 0.4.2 does not support spatialite
