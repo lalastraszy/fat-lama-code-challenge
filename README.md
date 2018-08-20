@@ -27,5 +27,5 @@ Summary on the approach
 -------------
 
 I decided to use [Tornado](http://www.tornadoweb.org/en/stable/) framework because it provides reasonable performance and is good for building a very performant web application.
-To implemented a localization search logic I used [SpatiaLite](https://www.gaia-gis.it/fossil/libspatialite/index) SQLite extension and [GeoAlchemy2](https://geoalchemy-2.readthedocs.io/en/latest/) library.
+To implemented a localization search logic I used [SpatiaLite](https://www.gaia-gis.it/fossil/libspatialite/index) extension and [GeoAlchemy2](https://geoalchemy-2.readthedocs.io/en/latest/) library.
 To do serializing/deserializing and validation I used [Schematics](https://schematics.readthedocs.io/en/latest/).
