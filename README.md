@@ -1,28 +1,31 @@
 # Backend Challenge
-## Introduction
-Fat Lama relies heavily on our search in order for users to be able to find the items they need. The main two factors in the search are:
-- **Text match**: the user types a word or phrase that they want to find, and the search returns items that match this.
-- **Location**: the user indicates their location (through geolocation or through typing in the location search box) and the search returns items near the user
 
-On the production web & mobile app there are other factors that come into play such as lender rating, response time, categories, time since listing, and more. For this challenge though, we want you to focus only on the two main factors given above.
+Install system dependencies
+-------------
+ - Install python3, see [instructions](https://docs.python-guide.org/starting/install3/osx/).
+ - Install virtualenv and activate it, see [instructions](https://docs.python-guide.org/dev/virtualenvs/#virtualenvironments-ref)
+ - Install SpatiaLite, see [instruction](https://docs.djangoproject.com/en/2.0/ref/contrib/gis/install/spatialite/)
 
-## The Challenge
-We want you to build a `GET /search` endpoint that will return the most appropriate 20 items given `searchTerm`, `lat` (latitude) and `lng` (longitude). e.g. `/search?searchTerm=camera&lat=51.948&lng=0.172943`. It is up to you to decide how to weight the two factors to return the most relevant results. We have provided you with a sqlite database containing just under 2000 items with the relevant fields.
+Running Server
+-------------
+1. Modify `SPATIALITE_LIBRARY_PATH` in run_server.sh
+2. Run below command
 
-When you are finished, write up a short summary of why you made the choices you did in terms of technology and design. This should be no more than 500 words.
 
-## Things to think about:
-- Think about points of failure and how your endpoint will perform under load.
-- Language/frameworks: Choose whatever language you will write your best code in. Please **do not choose a language/technology that you are unfamiliar with.**
-- Testing: use whatever tools you prefer to test your code appropriately
-- Try to implement appropriate [separation of concerns](https://effectivesoftwaredesign.com/2012/02/05/separation-of-concerns/) & modular code
-- Think hard about naming of functions and variables. Your code must be readable
-- Code style & file structure is up to you, but make sure it is consistent and easy to understand
+    $ ./run_server.sh
 
-## Checklist for Challenge
-- [ ] Duplicate this repo (please do not fork it, see [instructions](https://help.github.com/articles/duplicating-a-repository/)). Bitbucket offers free private repos if you don't want to use a public one.
-- [ ] Build API endpoint for Fat Lama search with according to above specifications
-- [ ] Ensure all code is sufficiently tested
-- [ ] Write brief summary on the approach you took and the tools you used (max 500 words)
-- [ ] Include instructions on how to build/ run your solution
-- [ ] Send us a link to your new repo.
+Running Tests
+-------------
+1. Modify SPATIALITE_LIBRARY_PATH in run_tests.sh
+2. Run below command
+
+
+    $ ./run_tests.sh
+    
+    
+Summary on the approach
+-------------
+
+I decided to use [Tornado](http://www.tornadoweb.org/en/stable/) framework because it provides reasonable performance and is good for building a very performant web application.
+To implemented a localization search logic I used [SpatiaLite](https://www.gaia-gis.it/fossil/libspatialite/index) SQLite extension and [GeoAlchemy2](https://geoalchemy-2.readthedocs.io/en/latest/) library.
+To do serializing/deserializing and validation I used [Schematics](https://schematics.readthedocs.io/en/latest/).
